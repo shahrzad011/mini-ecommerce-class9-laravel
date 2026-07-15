@@ -69,7 +69,7 @@
             <div
                 class="flex items-center justify-evenly flex-wrap mt-12 child:mb-8 gap-x-8 child:items-center child:flex-col child:duration-300 child:cursor-pointer child:gap-y-1 child:text-gray-800 child:dark:text-gray-300 child:relative"
             >
-                <a href="http://127.0.0.1:8000/products?category_id%5B1%5D=on" class="group flex">
+                <a href="http://127.0.0.1:9000/products?category_id%5B1%5D=on" class="group flex">
                     <img src="./assets/images/category/5.png"
                          class="w-[100px] h-[100px] lg:w-[120px] lg:h-[120px] object-cover group-hover:grayscale group-hover:opacity-90 duration-300"
                          alt="category1"/>
@@ -77,7 +77,7 @@
                         الکترونیک
                     </p>
                 </a>
-                <a href="http://127.0.0.1:8000/products?category_id%5B2%5D=on" class="group flex">
+                <a href="http://127.0.0.1:9000/products?category_id%5B2%5D=on" class="group flex">
                     <img src="./assets/images/category/5.png"
                          class="w-[100px] h-[100px] lg:w-[120px] lg:h-[120px] object-cover group-hover:grayscale group-hover:opacity-90 duration-300"
                          alt="category1"/>
@@ -119,7 +119,7 @@
                             </svg>
                         </button>
                     </div>
-                    <a href="http://127.0.0.1:8000/products?sort=newest"
+                    <a href="http://127.0.0.1:9000/products?sort=newest"
                        class="group shadow-xl text-sm md:text-base flex gap-x-1.5 items-center px-2 h-10 md:px-3 text-white bg-blue-600 rounded-xl">
                         <p>مشاهده همه</p>
                         <span
@@ -140,9 +140,9 @@
                         <!-- product header -->
                         <div class="product-card_header">
                             <div class="flex items-center gap-x-2">
-                                <form action="http://127.0.0.1:8000/cart/add" method="POST">
-                                    <input type="hidden" name="_token" value="4bYZgaUXw6NRUpehNCo79sVxnGyoZdTpQMBuSG48"
-                                           autocomplete="off">
+                                <form action="http://127.0.0.1:9000/cart/add" method="POST">
+                                    @csrf
+
                                     <input type="hidden" name="product_id" value="1"/>
                                     <input type="hidden" name="qty" value="1"/>
 
@@ -169,18 +169,18 @@
             </span>
                         </div>
                         <!-- product img -->
-                        <a href="http://127.0.0.1:8000/products/1">
+                        <a href="http://127.0.0.1:9000/products/1">
                             <img
                                 class="product-card_img group-hover:opacity-0 absolute"
-                                src="http://127.0.0.1:8000/assets/images/products/1.png"
+                                src="http://127.0.0.1:9000/assets/images/products/1.png"
                                 alt=""
                             >
                             <img class="product-card_img opacity-0 group-hover:opacity-100"
-                                 src="http://127.0.0.1:8000/assets/images/products/1.png" alt="">
+                                 src="http://127.0.0.1:9000/assets/images/products/1.png" alt="">
                         </a>
                         <!--  product footer -->
                         <div class="space-y-2">
-                            <a href="http://127.0.0.1:8000/products/1" class="product-card_link">
+                            <a href="http://127.0.0.1:9000/products/1" class="product-card_link">
                                 گوشی هوشمند | Smartphone
                             </a>
                             <!-- Rate and Price -->
@@ -199,7 +199,7 @@
                         <!-- product header -->
                         <div class="product-card_header">
                             <div class="flex items-center gap-x-2">
-                                <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                <form action="http://127.0.0.1:9000/cart/add" method="POST">
                                     <input type="hidden" name="_token" value="4bYZgaUXw6NRUpehNCo79sVxnGyoZdTpQMBuSG48"
                                            autocomplete="off">
                                     <input type="hidden" name="product_id" value="2"/>
@@ -228,18 +228,18 @@
             </span>
                         </div>
                         <!-- product img -->
-                        <a href="http://127.0.0.1:8000/products/2">
+                        <a href="http://127.0.0.1:9000/products/2">
                             <img
                                 class="product-card_img group-hover:opacity-0 absolute"
-                                src="http://127.0.0.1:8000/assets/images/products/1.png"
+                                src="http://127.0.0.1:9000/assets/images/products/1.png"
                                 alt=""
                             >
                             <img class="product-card_img opacity-0 group-hover:opacity-100"
-                                 src="http://127.0.0.1:8000/assets/images/products/1.png" alt="">
+                                 src="http://127.0.0.1:9000/assets/images/products/1.png" alt="">
                         </a>
                         <!--  product footer -->
                         <div class="space-y-2">
-                            <a href="http://127.0.0.1:8000/products/2" class="product-card_link">
+                            <a href="http://127.0.0.1:9000/products/2" class="product-card_link">
                                 رمان | Novel
                             </a>
                             <!-- Rate and Price -->
@@ -288,7 +288,7 @@
                             </svg>
                         </button>
                     </div>
-                    <a href="http://127.0.0.1:8000/products?sort=best_selling"
+                    <a href="http://127.0.0.1:9000/products?sort=best_selling"
                        class="group shadow-xl text-sm md:text-base flex gap-x-1.5 items-center px-2 h-10 md:px-3 text-white bg-blue-600 rounded-xl">
                         <p>مشاهده همه</p>
                         <span
@@ -309,7 +309,7 @@
                         <!-- product header -->
                         <div class="product-card_header">
                             <div class="flex items-center gap-x-2">
-                                <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                <form action="http://127.0.0.1:9000/cart/add" method="POST">
                                     <input type="hidden" name="_token" value="4bYZgaUXw6NRUpehNCo79sVxnGyoZdTpQMBuSG48"
                                            autocomplete="off">
                                     <input type="hidden" name="product_id" value="1"/>
@@ -338,18 +338,18 @@
             </span>
                         </div>
                         <!-- product img -->
-                        <a href="http://127.0.0.1:8000/products/1">
+                        <a href="http://127.0.0.1:9000/products/1">
                             <img
                                 class="product-card_img group-hover:opacity-0 absolute"
-                                src="http://127.0.0.1:8000/assets/images/products/1.png"
+                                src="http://127.0.0.1:9000/assets/images/products/1.png"
                                 alt=""
                             >
                             <img class="product-card_img opacity-0 group-hover:opacity-100"
-                                 src="http://127.0.0.1:8000/assets/images/products/1.png" alt="">
+                                 src="http://127.0.0.1:9000/assets/images/products/1.png" alt="">
                         </a>
                         <!--  product footer -->
                         <div class="space-y-2">
-                            <a href="http://127.0.0.1:8000/products/1" class="product-card_link">
+                            <a href="http://127.0.0.1:9000/products/1" class="product-card_link">
                                 گوشی هوشمند | Smartphone
                             </a>
                             <!-- Rate and Price -->
@@ -368,7 +368,7 @@
                         <!-- product header -->
                         <div class="product-card_header">
                             <div class="flex items-center gap-x-2">
-                                <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                <form action="http://127.0.0.1:9000/cart/add" method="POST">
                                     <input type="hidden" name="_token" value="4bYZgaUXw6NRUpehNCo79sVxnGyoZdTpQMBuSG48"
                                            autocomplete="off">
                                     <input type="hidden" name="product_id" value="2"/>
@@ -397,18 +397,18 @@
             </span>
                         </div>
                         <!-- product img -->
-                        <a href="http://127.0.0.1:8000/products/2">
+                        <a href="http://127.0.0.1:9000/products/2">
                             <img
                                 class="product-card_img group-hover:opacity-0 absolute"
-                                src="http://127.0.0.1:8000/assets/images/products/1.png"
+                                src="http://127.0.0.1:9000/assets/images/products/1.png"
                                 alt=""
                             >
                             <img class="product-card_img opacity-0 group-hover:opacity-100"
-                                 src="http://127.0.0.1:8000/assets/images/products/1.png" alt="">
+                                 src="http://127.0.0.1:9000/assets/images/products/1.png" alt="">
                         </a>
                         <!--  product footer -->
                         <div class="space-y-2">
-                            <a href="http://127.0.0.1:8000/products/2" class="product-card_link">
+                            <a href="http://127.0.0.1:9000/products/2" class="product-card_link">
                                 رمان | Novel
                             </a>
                             <!-- Rate and Price -->
