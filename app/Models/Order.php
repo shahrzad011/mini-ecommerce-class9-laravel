@@ -19,6 +19,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $final_price
  * @property int $final_discount
  * @property int $total_products
+ * @property string $user_province
+ * @property string $user_city
+ * @property string $user_address
+ * @property string $user_postal_code
+ * @property string $user_mobile
+ * @property string|null $description
+ * @property string|null $tracking_code
  * @property int $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -48,6 +55,13 @@ class Order extends Model
 		'final_price',
 		'final_discount',
 		'total_products',
+		'user_province',
+		'user_city',
+		'user_address',
+		'user_postal_code',
+		'user_mobile',
+		'description',
+		'tracking_code',
 		'status'
 	];
 
