@@ -32,18 +32,18 @@
              فروشگاه <span class="text-blue-500">درنیکا</span>
          </span>
                 </a>
+
             </div>
             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <p class="mb-2 text-gray-800 dark:text-gray-100 font-DanaMedium text-lg">ورود به حساب کاربری </p>
 
-@dump($errors->getMessages())
 
                 @error('general')
                 <span style="color: red"> {{$message}}</span>
                 @enderror
 
                 <form class="space-y-5" action="{{route('auth.login.post')}}" method="POST">
-                  @csrf
+                    @csrf
 
                     <div>
                         <label for="mobile" class="block text-sm/6 font-medium text-gray-500 dark:text-gray-300">

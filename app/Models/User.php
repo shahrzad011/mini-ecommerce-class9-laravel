@@ -30,29 +30,29 @@ use Illuminate\Foundation\Auth\User as Authenticate;
  */
 class User extends Authenticate
 {
-	protected $table = 'users';
-	public static $snakeAttributes = false;
+    protected $table = 'users';
+    public static $snakeAttributes = false;
 
-	protected $casts = [
-		'status' => UserStatus::class
-	];
+    protected $casts = [
+        'status' => UserStatus::class
+    ];
 
-	protected $hidden = [
-		'password'
-	];
+    protected $hidden = [
+        'password'
+    ];
 
-	protected $fillable = [
-		'first_name',
-		'last_name',
-		'email',
-		'mobile',
-		'password',
-		'status'
-	];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'mobile',
+        'password',
+        'status'
+    ];
 
 
     public function orders()
-	{
-		return $this->hasMany(Order::class);
-	}
+    {
+        return $this->hasMany(Order::class);
+    }
 }

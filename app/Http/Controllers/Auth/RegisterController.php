@@ -15,6 +15,7 @@ class RegisterController extends Controller
 
     public function index()
     {
+
         $withoutHeader = true;
         $withoutFooter = true;
 
