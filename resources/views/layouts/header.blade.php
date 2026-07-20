@@ -7,7 +7,7 @@
         <div class="flex-between">
             <!-- Search Box -->
             <div class="relative z-20">
-                <form action="http://127.0.0.1:8000/products">
+                <form action="{{route('products.index')}}">
                     <!-- INPUT -->
                     <div
                         class="search-btn-open flex gap-x-2 app-border bg-gray-50 dark:bg-gray-700 p-1 rounded-full cursor-pointer ring-blue-400 w-84 transition-all"
@@ -22,7 +22,7 @@
                             placeholder="جستجو در محصولات..."
                             type="text"
                             name="keyword"
-                            value=""
+                            value="{{request()->input('keyword')}}"
                             style="border: 0"
                         />
                     </div>
@@ -39,7 +39,39 @@
             <div class="flex items-center gap-x-3">
 
                 @auth
-                    نداریم
+                    <!-- Account Btn -->
+                    <button class="group relative flex-center py-2 px-4 app-border rounded-full app-hover delay-75">
+                        <a href="{{ route('account.edit-profile.index') }}"  class="flex items-center gap-x-1">
+                            <svg class="size-5">
+                                <use href="#user" />
+                            </svg>
+                            <p>حساب کاربری</p>
+                        </a>
+                        <div
+                            class="absolute dark:border-none border border-gray-100 w-52 p-2 bg-white text-gray-900 dark:text-gray-100 flex flex-col gap-y-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:top-12 transition-all delay-100 dark:bg-gray-700 top-20 rounded-lg text-base shadow child:transition-all duration-300 child:py-1.5 child:px-2 z-30 child:rounded-lg child:w-full">
+                            <a href="{{ route('account.orders')}}"
+                               class="flex items-center gap-x-2  hover:bg-blue-500 hover:text-gray-100">
+                                <svg class="h-5 w-5">
+                                    <use href="#user"></use>
+                                </svg>
+                                سفارشات من
+                            </a>
+                            <a href="{{ route('account.edit-profile.index') }}"
+                               class="flex items-center gap-x-2  hover:bg-blue-500 hover:text-gray-100">
+                                <svg class="h-5 w-5">
+                                    <use href="#cog"></use>
+                                </svg>
+                                اطلاعات کاربری
+                            </a>
+                            <a href="{{ route('auth.logout') }}"
+                               class="flex items-center gap-x-2  hover:bg-red-500 dark:hover:bg-red-500 hover:text-gray-100">
+                                <svg class="h-5 w-5">
+                                    <use href="#arrow-left-end"></use>
+                                </svg>
+                                خروج از حساب
+                            </a>
+                        </div>
+                    </button>
                 @else
 
                     <!-- LOGIN -->
@@ -85,162 +117,5 @@
         @include('layouts.navbar')
 
     </div>
-
-    <!-- Mobile -->
-    {{--    <div class="flex justify-center lg:hidden">--}}
-    {{--        <!-- Top Navbar -->--}}
-    {{--        <nav--}}
-    {{--            class="absolute top-0 inset-x-0 w-full h-16 px-4 shadow-sm dark:bg-gray-800 flex items-center justify-between">--}}
-    {{--            <!-- Menu -->--}}
-    {{--            <button class="open-menu-mobile flex-center p-2 app-border rounded-full">--}}
-    {{--                <svg class=" size-6">--}}
-    {{--                    <use href="#bars"/>--}}
-    {{--                </svg>--}}
-    {{--            </button>--}}
-    {{--            <div class="mobile-menu z-50 flex flex-col">--}}
-    {{--                <!--  MENU MOBILE header -->--}}
-    {{--                <div class="flex w-full items-center justify-between border-b-normal pb-4">--}}
-    {{--                    <a href="index.html" class="text-xl font-MorabbaMedium">--}}
-    {{--                        فروشگاه<span class="text-blue-500">درنیکا</span>--}}
-    {{--                    </a>--}}
-    {{--                    <button class="close-menu-mobile">--}}
-    {{--                        <svg class="size-5 text-gray-500 dark:text-gray-200">--}}
-    {{--                            <use href="#x-mark"/>--}}
-    {{--                        </svg>--}}
-    {{--                    </button>--}}
-    {{--                </div>--}}
-    {{--                <!-- MENU MOBILE CATEGORY & ACTION  -->--}}
-    {{--                <ul class="flex flex-col gap-y-2 text-gray-800 dark:text-gray-100 mt-4">--}}
-
-    {{--                    <li class="mobile-menu-item">--}}
-    {{--                        <svg class="size-4">--}}
-    {{--                            <use href="#arrow"/>--}}
-    {{--                        </svg>--}}
-    {{--                        <a href="dashboard.html">دسته بندی</a>--}}
-    {{--                    </li>--}}
-    {{--                    <li class="mobile-menu-item">--}}
-    {{--                        <svg class="size-5">--}}
-    {{--                            <use href="#user"/>--}}
-    {{--                        </svg>--}}
-    {{--                        <a href="dashboard.html">حساب کاربری</a>--}}
-    {{--                    </li>--}}
-    {{--                    <li class="mobile-menu-item">--}}
-    {{--                        <svg class="size-5">--}}
-    {{--                            <use href="#shopping-cart"/>--}}
-    {{--                        </svg>--}}
-    {{--                        <a href="shopping-cart.html">سبد خرید</a>--}}
-    {{--                    </li>--}}
-    {{--                    <li class="mobile-menu-item">--}}
-    {{--                        <svg class="size-5">--}}
-    {{--                            <use href="#check-badge"/>--}}
-    {{--                        </svg>--}}
-    {{--                        <a href="#">دربـاره مـا</a>--}}
-    {{--                    </li>--}}
-    {{--                    <li class="mobile-menu-item">--}}
-    {{--                        <svg class="size-5">--}}
-    {{--                            <use href="#phone"/>--}}
-    {{--                        </svg>--}}
-    {{--                        <a href="contact-us.html">تـماس بـا مـا</a>--}}
-    {{--                    </li>--}}
-    {{--                </ul>--}}
-    {{--            </div>--}}
-    {{--            <!-- Logo -->--}}
-    {{--            <a href="index.html" class="flex flex-col text-center">--}}
-    {{--                    <span class="font-MorabbaMedium text-3xl flex items-center">--}}
-    {{--                        فروشگاه<span class="text-blue-500">درنیکا</span>--}}
-    {{--                    </span>--}}
-    {{--            </a>--}}
-    {{--            <!-- Toggle theme -->--}}
-    {{--            <button class="toggle-theme flex-center p-2 app-border rounded-full ">--}}
-    {{--                <svg class="inline-block dark:hidden size-6">--}}
-    {{--                    <use href="#moon"/>--}}
-    {{--                </svg>--}}
-    {{--                <svg class="hidden dark:inline size-6">--}}
-    {{--                    <use href="#sun"/>--}}
-    {{--                </svg>--}}
-    {{--            </button>--}}
-    {{--        </nav>--}}
-
-    {{--        <!-- Search baer -->--}}
-    {{--        <button class="open-mobile_search-modal">--}}
-    {{--            <svg class=" size-6">--}}
-    {{--                <use href="#search"/>--}}
-    {{--            </svg>--}}
-    {{--            <p>جستجو در <span class="font-MorabbaMedium">محصولات</span></p>--}}
-    {{--        </button>--}}
-
-    {{--        <!-- Search Modal -->--}}
-    {{--        <div class="mobile_search-modal">--}}
-    {{--            <!-- TOP -->--}}
-    {{--            <div class="w-full flex items-center gap-x-2">--}}
-    {{--                <button--}}
-    {{--                    class="w-full flex items-center gap-x-1 bg-gray-200 dark:bg-gray-800 text-gray-500 py-2 px-4 rounded-3xl">--}}
-    {{--                    <svg class="size-6">--}}
-    {{--                        <use href="#search"/>--}}
-    {{--                    </svg>--}}
-    {{--                    <input type="text" placeholder="جستجو در همه کالاها">--}}
-    {{--                </button>--}}
-    {{--                <svg class="size-6 close-mobile_search-modal">--}}
-    {{--                    <use href="#x-mark"/>--}}
-    {{--                </svg>--}}
-    {{--            </div>--}}
-
-    {{--            <div class="w-full space-y-4">--}}
-
-    {{--                <!-- Trend -->--}}
-    {{--                <div class="pt-4">--}}
-    {{--                        <span class="flex items-center gap-x-1 text-sm text-gray-500 dark:text-gray-200">--}}
-    {{--                            <svg class="size-4">--}}
-    {{--                                <use href="#fire"/>--}}
-    {{--                            </svg>--}}
-    {{--                            <p>جستجو های پرطرفدار :</p>--}}
-    {{--                        </span>--}}
-    {{--                    <ul class="w-full flex items-center gap-1.5 mt-3 child:search-modal-list-item">--}}
-    {{--                        <li>--}}
-    {{--                            <a href="#">#آیفون</a>--}}
-    {{--                        </li>--}}
-    {{--                        <li>--}}
-    {{--                            <a href="#">#لپ تاپ</a>--}}
-    {{--                        </li>--}}
-    {{--                        <li>--}}
-    {{--                            <a href="#">#هدفون</a>--}}
-    {{--                        </li>--}}
-    {{--                        <li>--}}
-    {{--                            <a href="#">#هلدر</a>--}}
-    {{--                        </li>--}}
-    {{--                    </ul>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-
-    {{--        <!-- bottom Navbar-->--}}
-    {{--        <ul class="bottom-navbar">--}}
-    {{--            <li class="dark:text-sky-400 text-blue-500 font-DanaMedium">--}}
-    {{--                <svg class="size-5">--}}
-    {{--                    <use href="#home"/>--}}
-    {{--                </svg>--}}
-    {{--                <a href="index.html">خانه</a>--}}
-    {{--            </li>--}}
-    {{--            <li>--}}
-    {{--                <svg class="size-5">--}}
-    {{--                    <use href="#squares"/>--}}
-    {{--                </svg>--}}
-    {{--                <a href="shop.html">فروشگاه</a>--}}
-    {{--            </li>--}}
-    {{--            <li>--}}
-    {{--                <svg class="size-5">--}}
-    {{--                    <use href="#shopping-bag"/>--}}
-    {{--                </svg>--}}
-    {{--                <a href="shopping-cart.html">سبد خرید</a>--}}
-    {{--            </li>--}}
-    {{--            <li>--}}
-    {{--                <svg class="size-5">--}}
-    {{--                    <use href="#user"/>--}}
-    {{--                </svg>--}}
-    {{--                <a href="dashboard.html">حساب من</a>--}}
-    {{--            </li>--}}
-    {{--        </ul>--}}
-    {{--    </div>--}}
-
 
 </header>

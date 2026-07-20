@@ -9,7 +9,7 @@
         </li>
 
         <li class="menu-item">
-            <a href="http://127.0.0.1:8000/products" class="menu-item_link">
+            <a href="{{ route('products.index') }}" class="menu-item_link">
                 فروشگاه
             </a>
         </li>
@@ -21,22 +21,23 @@
         </li>
 
         <li class="menu-item">
-            <a href="/" class="menu-item_link">
+            <a href="{{ route('contact') }}" class="menu-item_link">
                 تماس با ما
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="/" class="menu-item_link">
+            <a href="{{ route('faq') }}" class="menu-item_link">
                 سوالات متداول
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="/" class="menu-item_link">
+            <a href="{{ route('about') }}" class="menu-item_link">
                 درباره ما
             </a>
         </li>
+
 
     </ul>
 

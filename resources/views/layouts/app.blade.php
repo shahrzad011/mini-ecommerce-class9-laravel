@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
         فروشگاه درنیکا
-        | صفحه اصلی
+        | {{ $title ?? 'صفحه اصلی' }}
     </title>
 
     <link rel="stylesheet" href="{{  asset('assets/styles/app.css') }}">
