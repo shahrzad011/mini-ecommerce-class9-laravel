@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class ProductCategory
  * 
  * @property int $id
- * @property int $name
+ * @property string $name
  * @property bool $is_active
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -29,7 +29,6 @@ class ProductCategory extends Model
 	public static $snakeAttributes = false;
 
 	protected $casts = [
-		'name' => 'int',
 		'is_active' => 'bool'
 	];
 

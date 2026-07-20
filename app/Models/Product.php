@@ -7,32 +7,35 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Database\Eloquent\Builder;
 /**
  * Class Product
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $en_name
  * @property int $product_category_id
  * @property int $price
- * @property int $discount
+ * @property float $discount
  * @property int $qty
  * @property int $status
  * @property string|null $description
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property ProductCategory $productCategory
  * @property Collection|OrderItem[] $orderItems
  * @property Collection|ProductImage[] $productImages
  *
  * @package App\Models
  */
+
+
 class Product extends Model
 {
 	use SoftDeletes;
@@ -42,7 +45,7 @@ class Product extends Model
 	protected $casts = [
 		'product_category_id' => 'int',
 		'price' => 'int',
-		'discount' => 'int',
+		'discount' => 'float',
 		'qty' => 'int',
 		'status' => 'int'
 	];
@@ -72,4 +75,77 @@ class Product extends Model
 	{
 		return $this->hasMany(ProductImage::class);
 	}
+
+
+    #[Scope]
+    public function applySort(Builder $query): void
+    {
+        $request = request();
+
+
+        switch ($request->input('sort') ?? 'unk') {
+            case 'best_selling':
+            {
+                $query->withSum('orderItems', 'qty')
+                    ->orderByDesc('order_items_sum_qty');
+                break;
+
+            }
+            case 'lowest':
+            {
+                $query->orderBy('price');
+                break;
+            }
+            case 'highest':
+            {
+                $query->orderByDesc('price');
+                break;
+            }
+            default:
+            {
+                $query->orderByDesc('created_at');
+            }
+        }
+    }
+
+
+    #[Scope]
+    public function applyFilter(Builder $query): Builder
+
+    {
+        $request = request();
+
+        if ($request->filled('exists')) {
+            $query->where('qty', '>', 0);
+
+        }
+
+        if ($request->filled('category_id')) {
+
+            $categoryIds = array_keys($request->input('category_id'));
+            $query->whereIn('product_category_id', $categoryIds);
+
+        }
+
+        return $query;
+    }
+
+    #[Scope]
+    public function applySearch(Builder $query): void
+    {
+        $request = request();
+
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
+
+            $query->whereAny([
+                'name',
+                'en_name',
+                'description'
+            ], 'LIKE', "%$keyword%");
+        }
+
+
+    }
+
 }
