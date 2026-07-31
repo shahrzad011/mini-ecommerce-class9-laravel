@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $image
  * @property string|null $url
  * @property int $sort
- * @property int $status
+ * @property boolean $status
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
@@ -35,7 +35,7 @@ class Slider extends Model
 
     protected $casts = [
         'sort' => 'int',
-        'status' => 'int',
+        'status' => 'boolean',
     ];
 
     protected $fillable = [
