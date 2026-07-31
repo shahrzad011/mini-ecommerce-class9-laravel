@@ -14,12 +14,15 @@ class ProductController extends Controller
         $title = 'فروشگاه';
 
         $products = Product::query()
+            ->with('defaultImage.file')
             ->applySort()
             ->applyFilter()
             ->applySearch()
             ->where('status', '=', ProductStatus::ENABLE)
             ->paginate(2)
             ->withQueryString();
+
+
 
         $productCategories = ProductCategory::all();
         return view('products.index', compact('products', 'productCategories', 'title'));
@@ -29,7 +32,11 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $product->load('ProductCategory');
+        $product->load([
+            'productCategory',
+            'productImages.file'
+        ]);
+
         $relatedProducts = Product::query()
             ->where('product_category_id', '=', $product->product_category_id)
             ->where('id', '!=', $product->id)
@@ -48,6 +55,33 @@ class ProductController extends Controller
 
         return redirect()->route('products.index', $inputs);
 
+    }
+
+    public function searchSuggestion(Request $request)
+    {
+        $keyword = $request->keyword;
+
+
+        $products = Product::query()
+            ->where('status',1)
+            ->where(function ($query) use ($keyword){
+
+                $query->where('name','like',"%{$keyword}%")
+                    ->orWhere('en_name','like',"%{$keyword}%");
+
+            })
+            ->select([
+                'id',
+                'name',
+                'en_name',
+                'price',
+                'discount'
+            ])
+            ->limit(5)
+            ->get();
+
+
+        return response()->json($products);
     }
 
 }
