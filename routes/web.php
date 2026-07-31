@@ -25,6 +25,13 @@ Route::prefix('products')->name('products.')->controller(ProductController::clas
         Route::get('{product}', 'show')->name('show');
     });
 
+//json-suggestion-search:
+
+Route::get(
+    'products/search/suggestion', [ProductController::class, 'searchSuggestion']
+
+)->name('products.searchSuggestion');
+
 
 //account:
 
