@@ -230,6 +230,15 @@ return [
         'link' => 'لینک',
         'mobile_number' => 'شماره تماس',
         'work_number' => 'شماره تماس ثابت',
+        'user_province'=>'استان',
+        'user_city'=> 'شهر',
+        'user_address'=> 'آدرس',
+        'user_postal_code'=> 'کدپستی',
+        'user_mobile'=> 'شماره موبایل',
+        'discount'=> 'تخفیف',
+        'qty'=> 'موجودی',
+        'en_name'=> 'نام انگلیسی',
+        'product_category_id'=> 'دسته بندی محصول'
     ],
 
 ];
