@@ -66,5 +66,46 @@ if (!function_exists('activeAccountSidebar')) {
         return "";
     }
 
+}
+
+if (!function_exists('activeAdminSidebar')) {
+
+    function activeAdminSidebar(string|array $routeNames): string
+    {
+
+        $currentRouteName = \Illuminate\Support\Facades\Route::currentRouteName();
+        if (is_string($routeNames)){
+            $routeNames = [$routeNames];
+        }
+
+        if (in_array($currentRouteName , $routeNames)){
+            return 'active';
+
+        }
+        return '';
+    }
+}
+
+
+if (!function_exists('getUserCartCount')){
+    function getUserCartCount():int
+    {
+        return \App\Services\CartService::getCount();
+    }
+}
+
+
+//settings:
+
+if (!function_exists('setting')) {
+
+
+    function setting($key, $default = null)
+    {
+
+        return \App\Models\Setting::where('code', $key)
+            ->value('value') ?? $default;
+
+    }
 
 }
