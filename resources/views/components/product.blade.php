@@ -3,9 +3,9 @@
     <!-- product header -->
     <div class="product-card_header">
         <div class="flex items-center gap-x-2">
-            <form action="http://127.0.0.1:8000/cart/add" method="POST">
-                <input type="hidden" name="_token" value="VofHLLAqMD1Drv23vG8MgkBtFMjNl7t6G8gfBpxL"
-                       autocomplete="off">
+            <form action="{{route('cart.add')}}" method="POST">
+                @csrf
+
                 <input type="hidden" name="product_id" value="{{$product->id}}"/>
                 <input type="hidden" name="qty" value="1"/>
 
@@ -22,26 +22,45 @@
                         سبد خرید
                     </div>
                 </div>
+
             </form>
         </div>
         @if($product->discount > 0)
             <!-- badge offer -->
             <span class="product-card_badge">
-                {{ $product->discount }}
-                %
-                تخفیف‌
-            </span>
+        {{ round(($product->discount / $product->price) * 100) }}
+        %
+        تخفیف
+    </span>
         @endif
+
     </div>
     <!-- product img -->
     <a href="{{route('products.show', $product->id)}}">
-        <img
-            class="product-card_img group-hover:opacity-0 absolute"
-            src="{{asset('assets/images/products/1.png')}}"
-            alt=""
-        >
-        <img class="product-card_img opacity-0 group-hover:opacity-100"
-             src="{{asset('assets/images/products/1.png')}}" alt="">
+        @if($product->defaultImage)
+
+            <img
+                class="product-card_img group-hover:opacity-0 absolute"
+                src="{{asset('storage/'.$product->defaultImage->file->path)}}"
+                alt="{{$product->name}}"
+            >
+
+            <img
+                class="product-card_img opacity-0 group-hover:opacity-100"
+                src="{{asset('storage/'.$product->defaultImage->file->path)}}"
+                alt="{{$product->name}}"
+            >
+
+        @else
+
+            <img
+                class="product-card_img"
+                src="{{asset('assets/images/products/1.png')}}"
+                alt="{{$product->name}}"
+            >
+
+        @endif
+
     </a>
     <!--  product footer -->
     <div class="space-y-2">

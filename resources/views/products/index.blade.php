@@ -7,7 +7,7 @@
         <nav class="flex mt-8" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
-                    <a href="http://127.0.0.1:8000"
+                    <a href="{{route('index')}}"
                        class="inline-flex items-center text-sm gap-x-1  text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <svg class="size-4 mb-0.5">
                             <use href="#home"/>
@@ -126,13 +126,12 @@
 
                         {{--برای جلوگیری از تداخل سورت و فیلتر  --}}
                         @if(request()->filled('sort'))
-                            <input type="hidden" name="sort"  value="{{request()->input('sort')}}">
+                            <input type="hidden" name="sort" value="{{request()->input('sort')}}">
                         @endif
 
                         @if(request()->filled('page'))
-                            <input type="hidden" name="page"  value="{{request()->input('page')}}">
+                            <input type="hidden" name="page" value="{{request()->input('page')}}">
                         @endif
-
 
 
                         <button type="submit" class="submit-btn" tabindex="3">فیلتر</button>
@@ -158,22 +157,26 @@
                                 <li
                                     class="{{activeSort('newest')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('newest'))}}">جدید ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('newest'))}}">جدید
+                                        ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('best_selling')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('best_selling'))}}">پرفروش ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('best_selling'))}}">پرفروش
+                                        ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('lowest')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('lowest'))}}">ارزان ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('lowest'))}}">ارزان
+                                        ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('highest')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('highest'))}}">گران ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('highest'))}}">گران
+                                        ترین</a>
                                 </li>
                             </ul>
 
@@ -190,124 +193,6 @@
                 <div
                     class="grid grid-cols-1 xxs:grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 xs:gap-2 sm:gap-4"
                 >
-                    <!-- PRODUCT ITEM -->
-                    {{--                    <div class="swiper-slide product-card group">--}}
-                    {{--                        <!-- product header -->--}}
-                    {{--                        <div class="product-card_header">--}}
-                    {{--                            <div class="flex items-center gap-x-2">--}}
-                    {{--                                <form action="http://127.0.0.1:8000/cart/add" method="POST">--}}
-                    {{--                                    <input type="hidden" name="_token" value="VofHLLAqMD1Drv23vG8MgkBtFMjNl7t6G8gfBpxL"--}}
-                    {{--                                           autocomplete="off">--}}
-                    {{--                                    <input type="hidden" name="product_id" value="2"/>--}}
-                    {{--                                    <input type="hidden" name="qty" value="1"/>--}}
-
-                    {{--                                    <div class="tooltip">--}}
-                    {{--                                        <button--}}
-                    {{--                                            type="submit"--}}
-                    {{--                                            class="rounded-full p-1.5 app-border app-hover"--}}
-                    {{--                                        >--}}
-                    {{--                                            <svg class="size-4">--}}
-                    {{--                                                <use href="#shopping-cart"></use>--}}
-                    {{--                                            </svg>--}}
-                    {{--                                        </button>--}}
-                    {{--                                        <div class="tooltiptext">--}}
-                    {{--                                            سبد خرید--}}
-                    {{--                                        </div>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </form>--}}
-                    {{--                            </div>--}}
-                    {{--                            <!-- badge offer -->--}}
-                    {{--                            <span class="product-card_badge">--}}
-                    {{--                1--}}
-                    {{--                %--}}
-                    {{--                تخفیف‌--}}
-                    {{--            </span>--}}
-                    {{--                        </div>--}}
-                    {{--                        <!-- product img -->--}}
-                    {{--                        <a href="http://127.0.0.1:8000/products/2">--}}
-                    {{--                            <img--}}
-                    {{--                                class="product-card_img group-hover:opacity-0 absolute"--}}
-                    {{--                                src="{{asset('assets/images/products/1.png')}}"--}}
-                    {{--                                alt=""--}}
-                    {{--                            >--}}
-                    {{--                            <img class="product-card_img opacity-0 group-hover:opacity-100"--}}
-                    {{--                                 src="{{asset('assets/images/products/1.png')}}" alt="">--}}
-                    {{--                        </a>--}}
-                    {{--                        <!--  product footer -->--}}
-                    {{--                        <div class="space-y-2">--}}
-                    {{--                            <a href="http://127.0.0.1:8000/products/2" class="product-card_link">--}}
-                    {{--                                رمان | Novel--}}
-                    {{--                            </a>--}}
-                    {{--                            <!-- Rate and Price -->--}}
-                    {{--                            <div class="product-card_price-wrapper">--}}
-                    {{--                                <!-- Price -->--}}
-                    {{--                                <div class="product-card_price">--}}
-                    {{--                                    <del>80,000 <h6>تومان</h6></del>--}}
-                    {{--                                    <p>79,000</p>--}}
-                    {{--                                    <span>تومان</span>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-                    <!-- PRODUCT ITEM -->
-                    {{--                    <div class="swiper-slide product-card group">--}}
-                    {{--                        <!-- product header -->--}}
-                    {{--                        <div class="product-card_header">--}}
-                    {{--                            <div class="flex items-center gap-x-2">--}}
-                    {{--                                <form action="http://127.0.0.1:8000/cart/add" method="POST">--}}
-                    {{--                                    <input type="hidden" name="_token" value="VofHLLAqMD1Drv23vG8MgkBtFMjNl7t6G8gfBpxL"--}}
-                    {{--                                           autocomplete="off">--}}
-                    {{--                                    <input type="hidden" name="product_id" value="1"/>--}}
-                    {{--                                    <input type="hidden" name="qty" value="1"/>--}}
-
-                    {{--                                    <div class="tooltip">--}}
-                    {{--                                        <button--}}
-                    {{--                                            type="submit"--}}
-                    {{--                                            class="rounded-full p-1.5 app-border app-hover"--}}
-                    {{--                                        >--}}
-                    {{--                                            <svg class="size-4">--}}
-                    {{--                                                <use href="#shopping-cart"></use>--}}
-                    {{--                                            </svg>--}}
-                    {{--                                        </button>--}}
-                    {{--                                        <div class="tooltiptext">--}}
-                    {{--                                            سبد خرید--}}
-                    {{--                                        </div>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </form>--}}
-                    {{--                            </div>--}}
-                    {{--                            <!-- badge offer -->--}}
-                    {{--                            <span class="product-card_badge">--}}
-                    {{--                10--}}
-                    {{--                %--}}
-                    {{--                تخفیف‌--}}
-                    {{--            </span>--}}
-                    {{--                        </div>--}}
-                    {{--                        <!-- product img -->--}}
-                    {{--                        <a href="http://127.0.0.1:8000/products/1">--}}
-                    {{--                            <img--}}
-                    {{--                                class="product-card_img group-hover:opacity-0 absolute"--}}
-                    {{--                                src="http://127.0.0.1:8000/assets/images/products/1.png"--}}
-                    {{--                                alt=""--}}
-                    {{--                            >--}}
-                    {{--                            <img class="product-card_img opacity-0 group-hover:opacity-100"--}}
-                    {{--                                 src="http://127.0.0.1:8000/assets/images/products/1.png" alt="">--}}
-                    {{--                        </a>--}}
-                    {{--                        <!--  product footer -->--}}
-                    {{--                        <div class="space-y-2">--}}
-                    {{--                            <a href="http://127.0.0.1:8000/products/1" class="product-card_link">--}}
-                    {{--                                گوشی هوشمند | Smartphone--}}
-                    {{--                            </a>--}}
-                    {{--                            <!-- Rate and Price -->--}}
-                    {{--                            --}}{{--                            <div class="product-card_price-wrapper">--}}
-                    {{--                            <!-- Price -->--}}
-                    {{--                            --}}{{--                                <div class="product-card_price">--}}
-                    {{--                            <del>500,000 <h6>تومان</h6></del>--}}
-                    {{--                            <p>450,000</p>--}}
-                    {{--                            <span>تومان</span>--}}
-                    {{--                            --}}{{--                                </div>--}}
-                    {{--                            --}}{{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
 
                     @foreach($products as $product)
                         @include('components.product')
