@@ -120,7 +120,7 @@
                        data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <div>
-                                <img src="/assets/admin/images/faces/DefaultAvatar.jpg" alt="img"
+                                <img src="{{asset('assets/admin/images/faces/DefaultAvatar.jpg')}}" alt="img"
                                      class="avatar avatar-sm avatar-rounded">
                             </div>
                         </div>
