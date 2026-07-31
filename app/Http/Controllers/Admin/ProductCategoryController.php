@@ -41,7 +41,7 @@ class ProductCategoryController extends Controller
 
             $category = ProductCategory::create([
                 'name' => $request->name,
-                'description' => $request->description,
+//                'description' => $request->description,
                 'is_active' => 1,
             ]);
 
@@ -69,9 +69,9 @@ class ProductCategoryController extends Controller
                     'path' => $path
                 ]);
 
-                $category->update([
-                    'file_id' => $file->id
-                ]);
+//                $category->update([
+//                    'file_id' => $file->id
+//                ]);
             }
 
             DB::commit();
@@ -130,7 +130,8 @@ class ProductCategoryController extends Controller
 
             $productCategory->update([
                 'name' => $request->name,
-                'description' => $request->description,
+//                'description' => $request->description,
+                'is_active' => 1,
             ]);
 
 
