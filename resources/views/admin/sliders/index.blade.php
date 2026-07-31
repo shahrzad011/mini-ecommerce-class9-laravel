@@ -91,7 +91,7 @@
 
                             <tr>
 
-                                <th width="90">
+                                <th class="slider-image-column ">
                                     تصویر
                                 </th>
 
@@ -115,7 +115,7 @@
                                     تاریخ ایجاد
                                 </th>
 
-                                <th width="180">
+                                <th class="slider-action-column">
                                     عملیات
                                 </th>
 
