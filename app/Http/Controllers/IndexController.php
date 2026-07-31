@@ -16,16 +16,24 @@ class IndexController extends Controller
         $productCategories = ProductCategory::query()
             ->limit(5)
             ->get();
+
         $newestProducts = Product::query()
+            ->with('defaultImage.file')
             ->orderByDesc('created_at')
             ->limit(5)
             ->get();
 
+
+
         $bestSellingProducts = Product::query()
+            ->with([
+                'defaultImage.file'
+            ])
             ->withSum('orderItems', 'qty')
             ->orderByDesc('order_items_sum_qty')
             ->limit(5)
             ->get();
+
 
 
         $sliders = Slider::query()
