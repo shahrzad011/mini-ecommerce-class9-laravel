@@ -8,33 +8,25 @@
                     فروشگاه درنیکا
                 </h2>
                 <p class="leading-8 text-gray-400 mb-5">
-                    در فروشگاه آنلاین ما، برندهای معتبر جهانی را با کیفیت بالا و قیمتی مناسب برای شما فراهم آورده‌ایم.
+                    {{$settings['footer_about'] ?? ''}}
                 </p>
                 <div class="flex items-center gap-x-4">
-                    <a href="https://www.instagram.com/dornicacompany"
+                    <a href="{{$settings['footer_instagram'] ?? '#'}}"
                        class="size-10 bg-gray-950 rounded-xl flex-center" target="_blank"
                        rel="noopener noreferrer">
                         <svg class="size-6 text-blue-500">
                             <use href="#instagram"></use>
                         </svg>
                     </a>
-{{--                    <a href="#" class="size-10 bg-gray-950 rounded-xl flex-center">--}}
-{{--                        <svg class="size-6 text-blue-500">--}}
-{{--                            <use href="#whatsapp"></use>--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
-                    <a href="https://www.linkedin.com/company/dornicacompany"
+
+                    <a href="{{$settings['footer_linkedin'] ?? '#'}}"
                        class="size-10 bg-gray-950 rounded-xl flex-center" target="_blank"
                        rel="noopener noreferrer">
                         <svg class="size-6 text-blue-500">
                             <use href="#linkedin"></use>
                         </svg>
                     </a>
-{{--                    <a href="#" class="size-10 bg-gray-950 rounded-xl flex-center">--}}
-{{--                        <svg class="size-6 text-blue-500">--}}
-{{--                            <use href="#youtube"></use>--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
+
                 </div>
             </div>
             <div class="flex-1 flex flex-col w-full lg:w-auto">
@@ -76,12 +68,7 @@
                             </li>
 
                         @endauth
-                        {{--                        <li>--}}
-                        {{--                            <a href="{{route('auth.login.index')}}">ورود به حساب کاربری</a>--}}
-                        {{--                        </li>--}}
-                        {{--                        <li>--}}
-                        {{--                            <a href="{{route('auth.register.index')}}">ثبت نام</a>--}}
-                        {{--                        </li>--}}
+
                     </ul>
                 </div>
             </div>
@@ -91,21 +78,21 @@
                     class="flex flex-col child:flex child:text-gray-400 child:items-center child:justify-between gap-y-5">
                     <li>
                         <p>شماره تماس :</p>
-                        <a href="tel:02191013171">
-                            021-91013171
+                        <a href="tel:{{$settings['footer_phone'] ?? ''}}">
+                            {{$settings['footer_phone'] ?? ''}}
                         </a>
-                        {{--                        <p dir="ltr">02191013171</p>--}}
+
                     </li>
                     <li>
                         <p>آدرس ایمیل :</p>
-                        <a href="mailto:info@dornica.net">
-                            info@dornica.com
+                        <a href="mailto:{{$settings['footer_email'] ?? ''}}">
+                            {{$settings['footer_email'] ?? ''}}
                         </a>
-                        {{--                        <p>info@dornica.net</p>--}}
+
                     </li>
                     <li>
                         <p>آدرس :</p>
-                        <p> مازندران، ساری، کیلومتر 5 جاده دریا </p>
+                        <p> {{$settings['footer_address'] ?? ''}} </p>
                     </li>
                 </ul>
             </div>
@@ -127,7 +114,9 @@
             class="w-full rounded-xl bg-gray-950 dark:bg-gray-900 flex flex-col md:flex-row gap-y-4 items-center justify-between p-4 md:p-6 mt-6">
             <a href="#" class="text-3xl font-MorabbaMedium">
 
-                <span class="text-blue-500">فروشگاه درنیکا</span>
+                <span class="text-blue-500">
+                    {{$settings['footer_title'] ?? 'فروشگاه درنیکا'}}
+                </span>
             </a>
         </div>
     </div>

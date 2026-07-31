@@ -5,8 +5,12 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
-        فروشگاه درنیکا
-        | {{ $title ?? 'صفحه اصلی' }}
+        {{config('project.title')}}
+        @isset($title)
+            |
+            {{$title}}
+        @endisset
+
     </title>
 
     <link rel="stylesheet" href="{{  asset('assets/styles/app.css') }}">
@@ -48,6 +52,7 @@
 <script src="{{  asset('assets/scripts/jquery-4.0.0.min.js') }}"></script>
 <script src="{{  asset('assets/swiper/swiper.js') }}"></script>
 <script src="{{  asset('assets/scripts/app.js') }}"></script>
+<script src="{{ asset('assets/scripts/search.js') }}"></script>
 <script type="module" src="{{  asset('assets/scripts/slider.js') }}"></script>
 
 

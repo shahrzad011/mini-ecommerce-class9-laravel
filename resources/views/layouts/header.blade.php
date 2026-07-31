@@ -7,11 +7,11 @@
         <div class="flex-between">
             <!-- Search Box -->
             <div class="relative z-20">
-                <form action="{{route('products.index')}}">
-                    <!-- INPUT -->
+                <form action="{{ route('products.index') }}">
+
                     <div
-                        class="search-btn-open flex gap-x-2 app-border bg-gray-50 dark:bg-gray-700 p-1 rounded-full cursor-pointer ring-blue-400 w-84 transition-all"
-                    >
+                        class="search-btn-open flex gap-x-2 app-border bg-gray-50 dark:bg-gray-700 p-1 rounded-full cursor-pointer ring-blue-400 w-84 transition-all">
+
                         <button type="submit">
                             <svg class="size-6 p-1.5 flex-center text-gray-100 bg-blue-600 rounded-full w-9 h-9">
                                 <use href="#search"/>
@@ -19,15 +19,26 @@
                         </button>
 
                         <input
-                            placeholder="جستجو در محصولات..."
+                            id="searchInput"
                             type="text"
                             name="keyword"
-                            value="{{request()->input('keyword')}}"
-                            style="border: 0"
+                            value="{{ request()->input('keyword') }}"
+                            placeholder="جستجو در محصولات..."
+                            autocomplete="off"
+                            style="border:0"
                         />
+
                     </div>
+
                 </form>
+
+                <div id="searchSuggestion"
+                     class="absolute top-14 right-0 w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg hidden overflow-hidden">
+
+                </div>
+
             </div>
+
             <!-- Logo -->
             <a href="{{route('index')}}" class="flex flex-col text-center ml-20">
                     <span class="font-MorabbaMedium text-4xl flex items-center">
@@ -41,9 +52,9 @@
                 @auth
                     <!-- Account Btn -->
                     <button class="group relative flex-center py-2 px-4 app-border rounded-full app-hover delay-75">
-                        <a href="{{ route('account.edit-profile.index') }}"  class="flex items-center gap-x-1">
+                        <a href="{{ route('account.edit-profile.index') }}" class="flex items-center gap-x-1">
                             <svg class="size-5">
-                                <use href="#user" />
+                                <use href="#user"/>
                             </svg>
                             <p>حساب کاربری</p>
                         </a>
@@ -95,21 +106,23 @@
                     </svg>
                 </button>
                 <!-- Shopping cart -->
-                <a href="http://127.0.0.1:8000/cart"
+                <a href="{{route('cart.index')}}"
                    class="flex-center p-2 bg-blue-600 text-gray-100 rounded-full open-cart relative">
                     <svg class="size-6">
                         <use href="#shopping-bag"/>
                     </svg>
-                    <span class="absolute -top-1 -right-1 flex h-4 w-4">
+                    @if(getUserCartCount())
+                        <span class="absolute -top-1 -right-1 flex h-4 w-4">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75">
 
                         </span>
                         <span
                             class="relative inline-flex rounded-full h-4 w-4 bg-red-500 text-xs pt-1 flex-center text-white">
-                            1
+                            {{getUserCartCount()}}
                         </span>
                     </span>
+                    @endif
                 </a>
             </div>
         </div>
