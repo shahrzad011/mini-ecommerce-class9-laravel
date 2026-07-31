@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+//        Paginator::useBootstrapFive();
+
+
+        View::composer(
+            'layouts.footer',
+            function ($view) {
+
+                $settings = Setting::pluck('value', 'code');
+
+
+                $view->with('settings', $settings);
+
+            }
+        );
     }
 }
