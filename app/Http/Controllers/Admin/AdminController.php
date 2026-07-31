@@ -39,11 +39,10 @@ class AdminController extends Controller
 
         Admin::create([
 
-            'name' => $request->name,
-
-            'email' => $request->email,
-
-            'password' => bcrypt($request->password),
+            'full_name' => $request->full_name,
+            'username'  => $request->username,
+            'password'  => bcrypt($request->password),
+            'status'    => $request->status,
 
         ]);
 
